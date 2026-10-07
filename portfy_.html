@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfy – Sua carreira organizada</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F7FC;--s:#fff;--s2:#EDF1FB;--bd:#DCE3F2;--tx:#0A1A3F;--tx2:#55627F;--br:#1F44C9;--br2:#0A1A3F;--on:#fff;--ok:#10B981;--wn:#F59E0B;--er:#E5484D;--sh:0 10px 40px rgba(10,26,63,.08);
+--f1:'Bricolage Grotesque','Inter',sans-serif;--f2:'Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070D1C;--s:#0E1730;--s2:#15213F;--bd:#24325C;--tx:#F4F7FF;--tx2:#A5B3D3;--br:#7FA2FF;--br2:#3A5BD9;--sh:0 10px 40px rgba(0,0,0,.45)}}
+:root[data-theme="dark"]{--bg:#070D1C;--s:#0E1730;--s2:#15213F;--bd:#24325C;--tx:#F4F7FF;--tx2:#A5B3D3;--br:#7FA2FF;--br2:#3A5BD9;--sh:0 10px 40px rgba(0,0,0,.45)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f2);background:var(--bg);color:var(--tx);line-height:1.5;transition:background .25s,color .25s}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input,select{font:inherit;color:var(--tx)}
+h1,h2,h3,h4{font-family:var(--f1);color:var(--tx);letter-spacing:-.02em;line-height:1.1}
+:focus-visible{outline:2px solid var(--br);outline-offset:2px}
+.scr{display:none}.scr.on{display:block}
+.logo{display:flex;align-items:center;gap:10px;font:800 21px var(--f1);color:var(--tx)}
+.lg{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--br2),#2F5BEA);display:grid;place-items:center}
+.lg svg{width:18px;height:18px;fill:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:14px;border:1.5px solid var(--bd);background:var(--s);color:var(--tx);transition:transform .15s,border-color .15s}
+.btn:hover{border-color:var(--br)}
+.btn.p{background:linear-gradient(135deg,var(--br2),#2F5BEA);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(47,91,234,.35)}
+.btn.p:hover{transform:translateY(-1px)}
+.btn.sm{padding:8px 14px;font-size:13px}.btn.bl{width:100%}.btn.dg{color:var(--er)}
+.ic{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--bd);background:var(--s2);display:grid;place-items:center;position:relative}
+.ic svg{width:18px;height:18px;stroke:var(--tx2)}
+/* landing */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(20px,calc((100% - 1160px)/2));background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.nl{display:flex;gap:26px;font-size:14px;font-weight:500;color:var(--tx2)}.nl a:hover{color:var(--tx)}
+.nr{display:flex;gap:10px;align-items:center}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:72px max(20px,calc((100% - 1160px)/2)) 56px}
+.hero h1{font-size:clamp(38px,5.4vw,66px);font-weight:800;margin-bottom:20px}
+.hero p{font-size:18px;color:var(--tx2);max-width:30em;margin-bottom:30px}
+.hb{display:flex;gap:12px;flex-wrap:wrap}
+.mock{background:var(--s);border:1.5px solid var(--bd);border-radius:20px;box-shadow:var(--sh);position:relative}
+.mbar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--bd);font-size:12px;color:var(--tx2)}
+.mbar i{width:10px;height:10px;border-radius:50%;background:var(--bd)}.mbar span{margin-left:10px;background:var(--s2);padding:3px 12px;border-radius:6px}
+.mb{padding:22px}.mh{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2F5BEA,var(--br2));color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex-shrink:0}
+.mh b{font:700 18px var(--f1);display:block}.mh small{color:var(--tx2);font-size:13px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.chip{background:var(--s2);color:var(--tx);border-radius:7px;padding:4px 10px;font-size:12px;font-weight:500}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.tl{height:78px;border-radius:12px;background:linear-gradient(135deg,#2F5BEA,#0A1A3F)}.tl:nth-child(2){background:linear-gradient(135deg,#6C93FF,#2F5BEA)}.tl:nth-child(3){background:linear-gradient(135deg,#0A1A3F,#355f94)}
+.pg{height:8px;background:var(--s2);border-radius:5px;overflow:hidden}.pg i{display:block;height:100%;width:86%;background:linear-gradient(90deg,#2F5BEA,#6C93FF);border-radius:5px;animation:fill 1.6s .3s ease-out both}
+@keyframes fill{from{width:0}}
+.pl{display:flex;justify-content:space-between;font-size:12px;color:var(--tx2);margin-bottom:6px}
+.fl{position:absolute;background:var(--s);border:1.5px solid var(--bd);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;box-shadow:var(--sh);display:flex;gap:8px;align-items:center}
+.fl i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.sec{padding:56px max(20px,calc((100% - 1160px)/2))}
+.sec>h2{font-size:clamp(28px,3.6vw,42px);max-width:16em;margin-bottom:12px}.sec>p{color:var(--tx2);max-width:36em;margin-bottom:32px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bc{background:var(--s);border:1.5px solid var(--bd);border-radius:18px;padding:24px;grid-column:span 2;overflow:hidden}
+.bc.w{grid-column:span 3}.bc.x{background:linear-gradient(135deg,var(--br2),#0A1A3F);border-color:transparent}.bc.x h3,.bc.x p{color:#fff}.bc.x p{opacity:.85}
+.bc h3{font-size:21px;margin-bottom:8px}.bc p{color:var(--tx2);font-size:14px;margin-bottom:16px}
+.bub{max-width:85%;padding:9px 13px;border-radius:12px;font-size:13px;margin-top:8px;background:rgba(255,255,255,.14);color:#fff}.bub.me{margin-left:auto;background:#fff;color:#0A1A3F}
+.row{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--bd);font-size:13px}.row b{color:var(--br);min-width:44px}
+.th{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.th div{height:70px;border-radius:10px;background:var(--s2);padding:8px}.th div i{display:block;height:5px;border-radius:3px;background:var(--bd);margin-bottom:5px}.th div i:first-child{background:var(--br);width:60%}
+.band{margin:24px max(20px,calc((100% - 1160px)/2)) 56px;border-radius:24px;padding:48px;background:linear-gradient(135deg,#0A1A3F,#22389b);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.band h2{color:#fff;font-size:clamp(26px,3vw,36px)}.band .btn{background:#fff;color:#0A1A3F;border:0}
+.ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:28px max(20px,calc((100% - 1160px)/2));border-top:1px solid var(--bd);color:var(--tx2);font-size:13px}
+/* auth */
+.ax{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.al{display:flex;flex-direction:column;padding:24px 32px}
+.at{display:flex;justify-content:space-between;align-items:center}
+.af{margin:auto;width:100%;max-width:380px;padding:32px 0}
+.ac{display:none}.ac.on{display:block}
+.ac h2{font-size:30px;margin-bottom:6px}.ac>p{color:var(--tx2);font-size:14px;margin-bottom:24px}
+.fd{margin-bottom:16px}.fd label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px}
+.fd label button{color:var(--br);font-size:13px;font-weight:500}
+.inp{width:100%;background:var(--s2);border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-size:14px}
+.inp:focus{outline:none;border-color:var(--br);box-shadow:0 0 0 3px color-mix(in srgb,var(--br) 20%,transparent)}
+.pw{position:relative}.pw .inp{padding-right:44px}.pw button{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;display:grid;place-items:center}.pw svg{width:18px;height:18px;stroke:var(--tx2)}
+.hint{font-size:12px;color:var(--tx2);margin-top:6px}.hint.ok{color:var(--ok)}
+.err{display:none;background:color-mix(in srgb,var(--er) 12%,transparent);color:var(--er);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:14px}.err.on{display:block}
+.sw{text-align:center;font-size:14px;color:var(--tx2);margin-top:22px}.sw button{color:var(--tx);font-weight:600;text-decoration:underline}
+.ar{background:linear-gradient(150deg,#0A1A3F,#22389b);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:64px;position:relative;overflow:hidden}
+.ar::before{content:'';position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.12);top:-160px;right:-160px;box-shadow:0 0 0 60px rgba(255,255,255,.03),0 0 0 120px rgba(255,255,255,.02)}
+.ar q{font:700 clamp(24px,2.6vw,34px)/1.25 var(--f1);quotes:none;position:relative;display:block;margin-bottom:28px;max-width:17em}
+.ar .who{display:flex;align-items:center;gap:12px;position:relative;font-size:14px}.ar .av{background:rgba(255,255,255,.18)}
+.stp{display:flex;gap:6px;margin-bottom:22px}.stp i{flex:1;height:4px;border-radius:2px;background:var(--bd)}.stp i.on{background:var(--br)}
+/* app */
+.ap{display:none}.ap.on{display:flex}
+.sb{width:230px;background:var(--s);border-right:1.5px solid var(--bd);position:fixed;top:0;bottom:0;left:0;z-index:60;display:flex;flex-direction:column;padding:calc(22px + env(safe-area-inset-top,0px)) 0 calc(0px + env(safe-area-inset-bottom,0px));transition:transform .3s}
+.sb .logo{padding:0 20px 20px;border-bottom:1.5px solid var(--bd)}
+.nv{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:4px}
+.ni{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-size:14px;font-weight:500;color:var(--tx2);text-align:left;width:100%}
+.ni svg{width:18px;height:18px;stroke:currentColor;flex-shrink:0}.ni:hover,.ni.on{background:var(--s2);color:var(--tx)}.ni.on{font-weight:600}
+.su{display:flex;align-items:center;gap:10px;padding:16px 20px;border-top:1.5px solid var(--bd)}.su div:last-child{min-width:0}.su b,.su small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.su b{font-size:13px}.su small{font-size:11px;color:var(--tx2)}
+.mn{margin-left:230px;flex:1;min-width:0;min-height:100vh}
+.tb{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 28px;background:var(--s);border-bottom:1.5px solid var(--bd)}
+.sr{display:flex;align-items:center;gap:8px;background:var(--s2);border:1.5px solid var(--bd);border-radius:10px;padding:8px 14px;width:min(260px,100%)}.sr input{background:none;border:0;outline:0;width:100%;font-size:14px}.sr svg{width:16px;height:16px;stroke:var(--tx2);flex-shrink:0}
+.pc{padding:28px}.pgx{display:none}.pgx.on{display:block}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;flex-wrap:wrap}.ph h2{font-size:28px}
+.cd{background:var(--s);border:1.5px solid var(--bd);border-radius:16px;padding:22px;box-shadow:var(--sh)}
+.cd h3{font-size:17px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.gr{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr);margin-bottom:20px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1.6fr 1fr}
+.st b{font:800 30px var(--f1);display:block;color:var(--tx)}.st span{font-size:13px;color:var(--tx2)}
+.tk{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--bd);font-size:14px}.tk:first-of-type{border-top:0}
+.ck{width:20px;height:20px;border:2px solid var(--bd);border-radius:6px;flex-shrink:0;display:grid;place-items:center;font-size:12px;color:#fff}.ck.d{background:var(--br2);border-color:var(--br2)}
+.tk span{flex:1}.tk.d span{text-decoration:line-through;color:var(--tx2)}.tk small{color:var(--tx2);font-size:12px}
+.x{color:var(--tx2);font-size:18px;padding:0 4px}.x:hover{color:var(--er)}
+.emp{color:var(--tx2);font-size:14px;padding:12px 0}
+.fb{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.fb button{padding:7px 16px;border-radius:20px;border:1.5px solid var(--bd);background:var(--s2);font-size:13px;font-weight:500;color:var(--tx2)}.fb button.on{background:var(--br2);border-color:var(--br2);color:#fff}
+.mc{overflow:hidden;padding:0}.mt{height:120px;display:grid;place-items:center;background:linear-gradient(135deg,var(--s2),var(--bd))}.mt div{width:64px;height:84px;background:var(--s);border-radius:6px;padding:8px;box-shadow:var(--sh)}.mt i{display:block;height:4px;background:var(--bd);border-radius:2px;margin-bottom:5px}.mt i:first-child{background:var(--br);width:55%}
+.mi{padding:16px}.mi h4{font-size:16px;margin-bottom:4px}.mi p{font-size:13px;color:var(--tx2);margin-bottom:12px}
+.cv{height:90px;border-radius:12px;margin-bottom:12px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cal small{font-size:12px;font-weight:600;color:var(--tx2);padding:6px}
+.cl{aspect-ratio:1;border-radius:10px;font-size:14px;position:relative;color:var(--tx);display:grid;place-items:center}.cl:hover{background:var(--s2)}.cl.o{color:var(--tx2);opacity:.45}
+.cl.t{background:var(--br2);color:#fff;font-weight:700}.cl.e::after{content:'';position:absolute;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--br)}.cl.t.e::after{background:#fff}
+.ag{display:flex;align-items:center;gap:14px;padding:14px 18px;margin-bottom:10px}.ag b{min-width:64px;font-family:var(--f1);font-size:16px}.ag small{display:block;color:var(--tx2);font-size:12px;font-weight:400}
+.tg{width:44px;height:24px;border-radius:12px;background:var(--bd);position:relative;flex-shrink:0}.tg::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}.tg.on{background:var(--br2)}.tg.on::after{transform:translateX(20px)}
+.sr2{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--bd)}.sr2:first-of-type{border-top:0}.sr2 small{display:block;color:var(--tx2);font-size:12px}
+.ov{position:fixed;inset:0;background:rgba(5,10,25,.6);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}.ov.on{display:flex}
+.md{background:var(--s);border-radius:20px;padding:28px;width:420px;max-width:100%;animation:pop .2s ease;box-shadow:var(--sh)}.md h3{font-size:22px;margin-bottom:18px}.ma{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.ts{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));right:24px;background:var(--tx);color:var(--bg);padding:13px 20px;border-radius:12px;font-size:14px;font-weight:500;z-index:300;transform:translateY(90px);opacity:0;transition:all .3s;max-width:calc(100% - 48px)}.ts.on{transform:none;opacity:1}
+.mb2{display:none}
+@media(max-width:960px){.hero,.ax{grid-template-columns:1fr}.ar{display:none}.bc,.bc.w{grid-column:span 6}.g4{grid-template-columns:repeat(2,1fr)}.g3,.g2{grid-template-columns:1fr}.nl{display:none}.fl{display:none}}
+@media(max-width:700px){.sb{transform:translateX(-100%)}.sb.on{transform:none}.mn{margin-left:0}.mb2{display:grid}.pc{padding:18px}.tb{padding:12px 16px}.sr{display:none}.band{padding:30px 24px}.hero{padding-top:40px}.al{padding:20px}.nr .btn.g{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="land" class="scr on">
+  <header class="nav">
+    <a class="logo" href="#"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</a>
+    <nav class="nl"><a href="#rec">Recursos</a><a href="#rec">Modelos</a><a href="#rec">Agente de IA</a><a href="#cta">Planos</a></nav>
+    <div class="nr">
+      <button class="ic" onclick="theme()" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="btn sm g" onclick="auth('login')">Entrar</button>
+      <button class="btn sm p" onclick="auth('reg')">Começar agora</button>
+    </div>
+  </header>
+  <section class="hero">
+    <div>
+      <h1>Sua carreira, organizada em um só lugar.</h1>
+      <p>Monte currículos e portfólios com modelos prontos, planeje estudos e entrevistas na agenda e peça ajuda ao Agente de IA quando travar.</p>
+      <div class="hb"><button class="btn p" onclick="auth('reg')">Criar conta grátis</button><button class="btn" onclick="auth('login')">Já tenho conta</button></div>
+    </div>
+    <div style="position:relative">
+      <div class="mock">
+        <div class="mbar"><i></i><i></i><i></i><span>portfy.app/marina</span></div>
+        <div class="mb">
+          <div class="mh"><div class="av">MS</div><div><b>Marina Souza</b><small>Designer de produto · Brasília</small></div></div>
+          <div class="chips"><span class="chip">UX Research</span><span class="chip">Figma</span><span class="chip">React</span><span class="chip">Python</span></div>
+          <div class="tiles"><div class="tl"></div><div class="tl"></div><div class="tl"></div></div>
+          <div class="pl"><span>Perfil completo</span><span>86%</span></div><div class="pg"><i></i></div>
+        </div>
+      </div>
+      <div class="fl" style="top:-18px;right:-12px"><i></i>Entrevista amanhã, 09:00</div>
+      <div class="fl" style="bottom:-18px;left:-14px">Currículo atualizado</div>
+    </div>
+  </section>
+  <section class="sec" id="rec">
+    <h2>Tudo para a sua jornada profissional, sem abrir dez abas.</h2>
+    <p>O Portfy reúne o que estudantes e profissionais usam todo dia para se apresentar e se organizar.</p>
+    <div class="bento">
+      <div class="bc w"><h3>Modelos de currículo e portfólio</h3><p>Escolha um modelo gratuito ou premium, edite e publique.</p><div class="th"><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div></div></div>
+      <div class="bc w x"><h3>Agente de IA</h3><p>Sugestões para melhorar seu currículo e respostas para dúvidas.</p><div class="bub me">Como destaco meu projeto de TCC?</div><div class="bub">Comece pelo problema que ele resolve e cite um resultado.</div></div>
+      <div class="bc"><h3>Agenda e tarefas</h3><p>Prazos, provas e entrevistas organizados.</p><div class="row"><b>09:00</b>Entrevista técnica</div><div class="row"><b>14:00</b>Estudar UX Research</div></div>
+      <div class="bc"><h3>Portfólios publicados</h3><p>Reúna seus projetos num link para compartilhar com recrutadores.</p><div class="chips"><span class="chip">Design</span><span class="chip">Dev</span><span class="chip">Dados</span></div></div>
+      <div class="bc"><h3>Dados protegidos</h3><p>Senha com regras de complexidade e tema claro ou escuro, como você preferir.</p><div class="chips"><span class="chip">Senha forte</span><span class="chip">Modo escuro</span></div></div>
+    </div>
+  </section>
+  <div class="band" id="cta"><h2>Comece em menos de 5 minutos.</h2><button class="btn" onclick="auth('reg')">Criar minha conta</button></div>
+  <footer class="ft"><span>© 2026 Portfy</span><span>Projeto Integrador · CEUB</span></footer>
+</div>
+
+<!-- AUTH -->
+<div id="auth" class="scr">
+  <div class="ax">
+    <div class="al">
+      <div class="at"><a class="logo" href="#" onclick="show('land');return false"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</a><button class="btn sm" onclick="show('land')">Voltar ao início</button></div>
+      <div class="af">
+        <form class="ac" id="a-login" onsubmit="return login(event)">
+          <h2>Bem-vindo de volta</h2><p>Entre na sua conta para continuar</p>
+          <div class="err" id="e-login"></div>
+          <div class="fd"><label for="l-em">E-mail</label><input class="inp" id="l-em" type="email" placeholder="voce@exemplo.com" autocomplete="email"></div>
+          <div class="fd"><label for="l-pw">Senha<button type="button" onclick="auth('forgot')">Esqueceu a senha?</button></label><div class="pw"><input class="inp" id="l-pw" type="password" placeholder="Sua senha" autocomplete="current-password"><button type="button" onclick="eye('l-pw')" aria-label="Mostrar senha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+          <button class="btn p bl" type="submit">Entrar</button>
+          <div class="sw">Não tem conta? <button type="button" onclick="auth('reg')">Cadastre-se</button></div>
+        </form>
+        <form class="ac" id="a-reg" onsubmit="return reg(event)">
+          <h2>Crie sua conta</h2><p>Leva menos de um minuto</p>
+          <div class="err" id="e-reg"></div>
+          <div class="fd"><label for="r-nm">Nome completo</label><input class="inp" id="r-nm" placeholder="Seu nome completo" autocomplete="name"></div>
+          <div class="fd"><label for="r-em">E-mail</label><input class="inp" id="r-em" type="email" placeholder="voce@exemplo.com" autocomplete="email"></div>
+          <div class="fd"><label for="r-pw">Senha</label><div class="pw"><input class="inp" id="r-pw" type="password" placeholder="Mínimo de 8 caracteres" oninput="rule()" autocomplete="new-password"><button type="button" onclick="eye('r-pw')" aria-label="Mostrar senha"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="hint" id="r-h">Use 8 ou mais caracteres, com uma letra maiúscula e um número.</div></div>
+          <div class="fd"><label for="r-cf">Confirmar senha</label><input class="inp" id="r-cf" type="password" placeholder="Repita a senha" autocomplete="new-password"></div>
+          <button class="btn p bl" type="submit">Continuar</button>
+          <div class="sw">Já tem conta? <button type="button" onclick="auth('login')">Entrar</button></div>
+        </form>
+        <form class="ac" id="a-forgot" onsubmit="return forgot(event)">
+          <h2>Recuperar senha</h2><p>Informe seu e-mail e escolha uma nova senha</p>
+          <div class="err" id="e-forgot"></div>
+          <div class="fd"><label for="f-em">E-mail</label><input class="inp" id="f-em" type="email" placeholder="voce@exemplo.com"></div>
+          <div class="fd"><label for="f-pw">Nova senha</label><input class="inp" id="f-pw" type="password" placeholder="Mínimo de 8 caracteres"></div>
+          <div class="fd"><label for="f-cf">Confirmar nova senha</label><input class="inp" id="f-cf" type="password" placeholder="Repita a senha"></div>
+          <button class="btn p bl" type="submit">Alterar senha</button>
+          <div class="sw"><button type="button" onclick="auth('login')">Voltar ao login</button></div>
+        </form>
+        <form class="ac" id="a-diag" onsubmit="return diag(event)">
+          <div class="stp"><i class="on"></i><i id="s2"></i><i id="s3"></i></div>
+          <h2>Vamos te conhecer</h2><p>Três perguntas para personalizar o seu início</p>
+          <div class="err" id="e-diag"></div>
+          <div class="fd"><label for="d1">Quantas horas você estuda por dia?</label><select class="inp" id="d1" onchange="stp()"><option value="">Selecione</option><option>Menos de 1 hora</option><option>1 a 2 horas</option><option>2 a 4 horas</option><option>Mais de 4 horas</option></select></div>
+          <div class="fd"><label for="d2">Em que fase acadêmica você está?</label><select class="inp" id="d2" onchange="stp()"><option value="">Selecione</option><option>Ensino Médio</option><option>Graduação</option><option>Pós-graduação</option><option>Já me formei</option></select></div>
+          <div class="fd"><label for="d3">Para qual mercado você vai ou já está?</label><select class="inp" id="d3" onchange="stp()"><option value="">Selecione</option><option>Tecnologia</option><option>Design</option><option>Marketing</option><option>Engenharia</option><option>Saúde</option><option>Educação</option><option>Outro</option></select></div>
+          <button class="btn p bl" type="submit">Concluir e entrar</button>
+        </form>
+      </div>
+    </div>
+    <aside class="ar"><q>Em uma tarde montei meu portfólio, marquei minhas entrevistas e atualizei o currículo. Tudo no mesmo lugar.</q><div class="who"><div class="av">LM</div><div><b>Lucas Martins</b><br>Estudante de Engenharia de Software</div></div></aside>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="scr ap">
+  <aside class="sb" id="sb">
+    <div class="logo"><span class="lg"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>Portfy</div>
+    <nav class="nv" id="nv"></nav>
+    <div class="su"><div class="av" id="u-av"></div><div><b id="u-nm"></b><small id="u-em"></small></div></div>
+  </aside>
+  <div class="mn">
+    <header class="tb">
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="ic mb2" onclick="$('#sb').classList.toggle('on')" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <label class="sr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="q" placeholder="Buscar modelos..." oninput="search()"></label>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="ic" onclick="notif()" aria-label="Notificações"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+        <button class="ic" onclick="theme()" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+        <div class="av" id="u-av2" style="cursor:pointer" onclick="go('cfg')"></div>
+      </div>
+    </header>
+    <main class="pc" id="pc"></main>
+  </div>
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)closeM()"><form class="md" id="md" onsubmit="return okM(event)"></form></div>
+<div class="ts" id="ts" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const M={},ls={get(k,d){if(k in M)return M[k];try{const v=JSON.parse(localStorage.getItem(k));return v??d}catch(e){return d}},set(k,v){M[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hash=async s=>{try{return[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('')}catch(e){return btoa(s)}};
+const iso=d=>d.toLocaleDateString('sv'),today=()=>iso(new Date());
+const addD=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d)};
+let me=null,D=null,page='dash',cal=new Date(),filt='todos',tm;
+const save=()=>ls.set('pf_d_'+me.email,D);
+function toast(m){const t=$('#ts');t.textContent=m;t.classList.add('on');clearTimeout(tm);tm=setTimeout(()=>t.classList.remove('on'),2800)}
+function show(id){$$('.scr').forEach(s=>s.classList.remove('on'));$('#'+id).classList.add('on');scrollTo(0,0)}
+function auth(t){show('auth');$$('.ac').forEach(c=>c.classList.toggle('on',c.id==='a-'+t));$$('.err').forEach(e=>e.classList.remove('on'))}
+function err(id,m){const e=$('#e-'+id);e.textContent=m;e.classList.add('on')}
+function eye(id){const i=$('#'+id);i.type=i.type==='password'?'text':'password'}
+const pwOk=p=>p.length>=8&&/[A-Z]/.test(p)&&/\d/.test(p);
+function rule(){const h=$('#r-h'),ok=pwOk($('#r-pw').value);h.classList.toggle('ok',ok);h.textContent=ok?'Senha forte.':'Use 8 ou mais caracteres, com uma letra maiúscula e um número.'}
+function stp(){const n=['d1','d2','d3'].filter(i=>$('#'+i).value).length;$('#s2').classList.toggle('on',n>=1);$('#s3').classList.toggle('on',n>=2)}
+const users=()=>ls.get('pf_users',[]);
+async function login(e){e.preventDefault();const em=$('#l-em').value.trim().toLowerCase(),pw=$('#l-pw').value;
+  if(!em||!pw)return err('login','Preencha e-mail e senha.'),false;
+  const u=users().find(x=>x.email===em);
+  if(!u||u.h!==await hash(pw))return err('login','E-mail ou senha incorretos. Confira os dados ou recupere sua senha.'),false;
+  ls.set('pf_session',em);enter();return false}
+async function reg(e){e.preventDefault();const nm=$('#r-nm').value.trim(),em=$('#r-em').value.trim().toLowerCase(),pw=$('#r-pw').value,cf=$('#r-cf').value;
+  if(!nm||!em||!pw||!cf)return err('reg','Preencha todos os campos.'),false;
+  if(!/^\S+@\S+\.\S+$/.test(em))return err('reg','Digite um e-mail válido.'),false;
+  if(!pwOk(pw))return err('reg','A senha precisa ter 8 ou mais caracteres, uma letra maiúscula e um número.'),false;
+  if(pw!==cf)return err('reg','As senhas não coincidem.'),false;
+  if(users().some(x=>x.email===em))return err('reg','Este e-mail já tem conta. Entre ou recupere a senha.'),false;
+  ls.set('pf_users',[...users(),{name:nm,email:em,h:await hash(pw)}]);
+  ls.set('pf_d_'+em,{tasks:[{id:1,t:'Atualizar meu currículo',d:today(),done:0},{id:2,t:'Escolher um modelo de portfólio',d:addD(1),done:0}],events:[{id:1,t:'Reunião de alinhamento',d:addD(1),h:'10:00'}],ports:[],notif:1,diag:null});
+  ls.set('pf_session',em);me=users().find(x=>x.email===em);auth('diag');return false}
+async function forgot(e){e.preventDefault();const em=$('#f-em').value.trim().toLowerCase(),pw=$('#f-pw').value,cf=$('#f-cf').value;
+  if(!em||!pw||!cf)return err('forgot','Preencha todos os campos.'),false;
+  if(!pwOk(pw))return err('forgot','A senha precisa ter 8 ou mais caracteres, uma letra maiúscula e um número.'),false;
+  if(pw!==cf)return err('forgot','As senhas não coincidem.'),false;
+  const l=users(),u=l.find(x=>x.email===em);if(!u)return err('forgot','Não encontramos uma conta com este e-mail.'),false;
+  u.h=await hash(pw);ls.set('pf_users',l);ls.set('pf_session',null);auth('login');toast('Senha alterada. Entre com a nova senha.');return false}
+function diag(e){e.preventDefault();const v=['d1','d2','d3'].map(i=>$('#'+i).value);
+  if(v.some(x=>!x))return err('diag','Responda as três perguntas para continuar.'),false;
+  D=ls.get('pf_d_'+me.email);D.diag=v;save();enter();return false}
+function enter(){const em=ls.get('pf_session',null);me=users().find(x=>x.email===em);if(!me){show('land');return}
+  D=ls.get('pf_d_'+em,{tasks:[],events:[],ports:[],notif:1});
+  const ini=me.name.split(' ').filter(Boolean).map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  ['#u-av','#u-av2'].forEach(s=>$(s).textContent=ini);$('#u-nm').textContent=me.name;$('#u-em').textContent=me.email;
+  show('app');go('dash')}
+function logout(){ls.set('pf_session',null);me=D=null;show('land');toast('Você saiu da conta.')}
+function theme(){const r=document.documentElement,dk=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=dk?'light':'dark';ls.set('pf_theme',r.dataset.theme);if(page==='cfg'&&me)render()}
+const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches};
+const NAV=[['dash','Início','M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z'],['mod','Modelos','M2 3h20v14H2zM8 21h8M12 17v4'],['cal','Calendário','M3 4h18v18H3zM16 2v4M8 2v4M3 10h18'],['age','Agenda','M14 2H6a2 2 0 0 0-2 2v16h16V8zM14 2v6h6M8 13h8M8 17h8'],['por','Portfólios','M2 7h20v14H2zM16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'],['cfg','Configurações','M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3']];
+function go(p){page=p;$('#sb').classList.remove('on');$('#nv').innerHTML=NAV.map(n=>`<button class="ni ${n[0]===p?'on':''}" onclick="go('${n[0]}')"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="${n[2]}"/></svg>${n[1]}</button>`).join('');render();scrollTo(0,0)}
+const lbl=d=>d===today()?'Hoje':d===addD(1)?'Amanhã':d.split('-').reverse().slice(0,2).join('/');
+const MODS=[['Currículo Profissional','Limpo e objetivo para o mercado tradicional','curriculo','Gratuito'],['Portfólio Criativo','Destaque seus projetos com visual impactante','portfolio','Gratuito'],['Perfil LinkedIn','Otimize seu perfil para recrutadores','linkedin','Gratuito'],['Case de Projeto','Documente um projeto de ponta a ponta','projeto','Pro'],['Currículo Moderno','Design contemporâneo para áreas criativas','curriculo','Pro'],['Portfólio Tech','Ideal para desenvolvedores e engenheiros','portfolio','Pro']];
+const COV=['linear-gradient(135deg,#2F5BEA,#0A1A3F)','linear-gradient(135deg,#6C93FF,#2F5BEA)','linear-gradient(135deg,#0A1A3F,#355f94)'];
+function render(){const el=$('#pc'),pend=D.tasks.filter(t=>!t.done),up=D.events.filter(e=>e.d>=today()).sort((a,b)=>(a.d+a.h).localeCompare(b.d+b.h));let h='';
+ if(page==='dash'){h=`<div class="ph"><div><h2>Olá, ${esc(me.name.split(' ')[0])}</h2><p style="color:var(--tx2)">Veja o que está no seu radar hoje.</p></div><button class="btn p" onclick="toast('O Agente de IA chega na próxima sprint.')">Falar com o Agente de IA</button></div>
+ <div class="gr g4">${[[D.ports.length,'Portfólios criados'],[pend.length,'Tarefas pendentes'],[up.length,'Compromissos próximos'],[D.tasks.length-pend.length,'Tarefas concluídas']].map(s=>`<div class="cd st"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>
+ <div class="gr g2"><div class="cd"><h3>Tarefas<button class="btn sm" onclick="openM('task')">Nova tarefa</button></h3>${D.tasks.length?D.tasks.map(t=>`<div class="tk ${t.done?'d':''}"><button class="ck ${t.done?'d':''}" onclick="tog(${t.id})" aria-label="Concluir">${t.done?'✓':''}</button><span>${esc(t.t)}</span><small>${lbl(t.d)}</small><button class="x" onclick="del('tasks',${t.id})" aria-label="Excluir">×</button></div>`).join(''):'<p class="emp">Nenhuma tarefa ainda. Adicione a primeira.</p>'}</div>
+ <div><div class="cd" style="margin-bottom:16px"><h3>Próximos compromissos</h3>${up.slice(0,3).map(e=>`<div class="tk"><b style="min-width:54px">${e.h}</b><span>${esc(e.t)}</span><small>${lbl(e.d)}</small></div>`).join('')||'<p class="emp">Sem compromissos marcados.</p>'}</div>
+ <div class="cd"><h3>Plano Gratuito</h3><p style="font-size:13px;color:var(--tx2);margin-bottom:14px">Modelos Pro e IA ilimitada estão no plano Pro, R$ 29/mês.</p><button class="btn p bl" onclick="toast('Pagamentos entram na próxima sprint.')">Ver planos</button></div></div></div>`}
+ if(page==='mod'){const q=$('#q').value.toLowerCase(),L=MODS.filter(m=>(filt==='todos'||m[2]===filt)&&(m[0]+m[1]).toLowerCase().includes(q));
+  h=`<div class="ph"><h2>Modelos</h2></div><div class="fb">${[['todos','Todos'],['curriculo','Currículo'],['portfolio','Portfólio'],['linkedin','LinkedIn'],['projeto','Projeto']].map(f=>`<button class="${filt===f[0]?'on':''}" onclick="filt='${f[0]}';render()">${f[1]}</button>`).join('')}</div><div class="gr g3">${L.map(m=>`<div class="cd mc"><div class="mt"><div><i></i><i></i><i></i><i></i></div></div><div class="mi"><h4>${m[0]}</h4><p>${m[1]}</p><div style="display:flex;justify-content:space-between;align-items:center"><span class="chip">${m[3]}</span><button class="btn sm p" onclick="useM('${m[0]}','${m[3]}')">Usar modelo</button></div></div></div>`).join('')||'<p class="emp">Nenhum modelo encontrado para essa busca.</p>'}</div>`}
+ if(page==='cal'){const y=cal.getFullYear(),m=cal.getMonth(),f=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),pv=new Date(y,m,0).getDate(),MN=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  let c=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(d=>`<small>${d}</small>`).join('');for(let i=f-1;i>=0;i--)c+=`<div class="cl o">${pv-i}</div>`;
+  for(let d=1;d<=n;d++){const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;c+=`<button class="cl ${ds===today()?'t':''} ${D.events.some(e=>e.d===ds)?'e':''}" onclick="openM('event','${ds}')">${d}</button>`}
+  h=`<div class="ph"><h2>Calendário</h2><button class="btn p" onclick="openM('event')">Novo compromisso</button></div><div class="cd"><div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><button class="btn sm" onclick="mon(-1)" aria-label="Mês anterior">‹</button><h3 style="margin:0;min-width:170px;text-align:center">${MN[m]} ${y}</h3><button class="btn sm" onclick="mon(1)" aria-label="Próximo mês">›</button></div><div class="cal">${c}</div></div>`}
+ if(page==='age'){const all=[...D.events].sort((a,b)=>(a.d+a.h).localeCompare(b.d+b.h));h=`<div class="ph"><h2>Agenda</h2><button class="btn p" onclick="openM('event')">Novo compromisso</button></div>${all.map(e=>`<div class="cd ag"><b>${e.h}</b><div style="flex:1">${esc(e.t)}<small>${lbl(e.d)}${e.d<today()?' · passou':''}</small></div><button class="x" onclick="del('events',${e.id})" aria-label="Excluir">×</button></div>`).join('')||'<div class="cd"><p class="emp">Sua agenda está vazia. Marque estudos, prazos e entrevistas.</p></div>'}`}
+ if(page==='por'){h=`<div class="ph"><h2>Portfólios</h2><button class="btn p" onclick="openM('port')">Novo portfólio</button></div><div class="gr g3">${D.ports.map(p=>`<div class="cd mc"><div class="cv" style="background:${COV[p.id%3]};border-radius:0;margin:0;height:110px"></div><div class="mi"><h4>${esc(p.t)}</h4><p>${esc(p.desc||'Sem descrição')}</p><button class="btn sm dg" onclick="del('ports',${p.id})">Excluir</button></div></div>`).join('')}<button class="cd" style="border-style:dashed;min-height:180px;color:var(--tx2);font-weight:600" onclick="openM('port')">+ Adicionar portfólio</button></div>`}
+ if(page==='cfg'){h=`<div class="ph"><h2>Configurações</h2></div><div class="gr" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="cd"><h3>Conta</h3><div class="sr2"><div>Nome<small>${esc(me.name)}</small></div><button class="btn sm" onclick="openM('name')">Editar</button></div><div class="sr2"><div>E-mail<small>${esc(me.email)}</small></div></div><div class="sr2"><div>Sair da conta<small>Encerrar a sessão neste dispositivo</small></div><button class="btn sm dg" onclick="logout()">Sair</button></div></div><div class="cd"><h3>Aparência e preferências</h3><div class="sr2"><div>Modo escuro<small>Alternar o tema da interface</small></div><button class="tg ${isDark()?'on':''}" onclick="theme()" aria-label="Modo escuro"></button></div><div class="sr2"><div>Notificações por e-mail<small>Receber lembretes de tarefas</small></div><button class="tg ${D.notif?'on':''}" onclick="D.notif=D.notif?0:1;save();render();toast('Preferência salva.')" aria-label="Notificações"></button></div></div></div>`}
+ el.innerHTML=`<section class="pgx on">${h}</section>`}
+function tog(id){const t=D.tasks.find(x=>x.id===id);t.done=t.done?0:1;save();render()}
+function del(k,id){D[k]=D[k].filter(x=>x.id!==id);save();render();toast('Item excluído.')}
+function mon(n){cal.setDate(1);cal.setMonth(cal.getMonth()+n);render()}
+function search(){if(page!=='mod')return go('mod');render()}
+function notif(){const n=D.tasks.filter(t=>!t.done&&t.d<=today()).length;toast(n?`Você tem ${n} tarefa(s) para hoje ou atrasada(s).`:'Nenhuma tarefa para hoje. Bom trabalho!')}
+function useM(n,pl){if(pl==='Pro')return toast('Este modelo faz parte do plano Pro.');D.ports.push({id:Date.now(),t:n,desc:'Criado a partir de um modelo'});save();go('por');toast('Portfólio criado a partir do modelo.')}
+let mk='';
+function openM(k,d){mk=k;const f=(l,id,t='text',v='')=>`<div class="fd"><label for="${id}">${l}</label><input class="inp" id="${id}" type="${t}" value="${esc(v)}"></div>`,T={task:'Nova tarefa',event:'Novo compromisso',port:'Novo portfólio',name:'Editar nome'}[k];
+ $('#md').innerHTML=`<h3>${T}</h3><div class="err" id="e-m"></div>`+(k==='name'?f('Nome completo','m1','text',me.name):f(k==='port'?'Título':'Título','m1'))+(k==='task'||k==='event'?f('Data','m2','date',d||today()):'')+(k==='event'?f('Horário','m3','time','09:00'):'')+(k==='port'?f('Descrição','m2'):'')+`<div class="ma"><button type="button" class="btn" onclick="closeM()">Cancelar</button><button class="btn p" type="submit">Salvar</button></div>`;
+ $('#ov').classList.add('on');setTimeout(()=>$('#m1').focus(),50)}
+function closeM(){$('#ov').classList.remove('on')}
+function okM(e){e.preventDefault();const v=$('#m1').value.trim(),a=$('#m2')?.value,b=$('#m3')?.value,id=Date.now();
+ if(!v){$('#e-m').textContent='Preencha o título para salvar.';$('#e-m').classList.add('on');return false}
+ if(mk==='task')D.tasks.push({id,t:v,d:a||today(),done:0});
+ if(mk==='event')D.events.push({id,t:v,d:a||today(),h:b||'09:00'});
+ if(mk==='port')D.ports.push({id,t:v,desc:a});
+ if(mk==='name'){const l=users();l.find(x=>x.email===me.email).name=v;ls.set('pf_users',l);me.name=v;$('#u-nm').textContent=v;const i=v.split(' ').filter(Boolean).map(n=>n[0]).join('').slice(0,2).toUpperCase();$('#u-av').textContent=$('#u-av2').textContent=i}
+ save();closeM();render();toast('Salvo com sucesso.');return false}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+(function init(){const t=ls.get('pf_theme',null);if(t)document.documentElement.dataset.theme=t;if(ls.get('pf_session',null))enter()})();
+</script>
+</body>
+</html>
